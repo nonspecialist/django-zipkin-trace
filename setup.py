@@ -1,9 +1,9 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='django-zipkin-trace',
-    version='1.0.2-criteo1',
-    url='https://github.com/whs/django-zipkin-trace',
+    name='django-zipkin-trace-criteo',
+    version='1.0.3',
+    url='https://github.com/criteo-forks/django-zipkin-trace',
     author='Manatsawin Hanmongkolchai',
     author_email='manatsawin+pypi@gmail.com',
     description='Automatically trace your Django application to Zipkin',
@@ -12,7 +12,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'Django',
-        'py_zipkin==0.11.0',
+        'py_zipkin==0.13.0',
         'requests-futures==0.9.7',
         'requests[security]'
     ],
