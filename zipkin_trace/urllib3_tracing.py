@@ -13,7 +13,7 @@ def wrap_urlopen(func):
 	if not hasattr(settings, 'ZIPKIN_SERVER'):
 		parsed_host = urllib.parse.urlparse(settings.ZIPKIN_SERVER)
 
-	def urlopen(self, method, url, **kw):
+	def urlopen(self, method, url, *args, **kw):
 		if parsed_host and self.host == parsed_host.hostname:
 			# Don't trace zipkin calls
 			return func(self, method, url, **kw)
@@ -32,7 +32,7 @@ def wrap_urlopen(func):
 				del kw['headers']
 
 			try:
-				out = func(self, method, url, headers=headers, **kw)
+				out = func(self, method, url, *args, headers=headers, **kw)
 
 				if hasattr(out.connection, 'sock') and out.connection.sock:
 					peer = out.connection.sock.getpeername()
