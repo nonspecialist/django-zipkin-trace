@@ -34,12 +34,11 @@ def wrap_urlopen(func):
 			try:
 				out = func(self, method, url, *args, headers=headers, **kw)
 
-				if hasattr(out.connection, 'sock') and out.connection.sock:
-					try:
-						peer = out.connection.sock.getpeername()
-						span.add_sa_binary_annotation(peer[1], self.host, peer[0])
-					except(AttributeError):
-						span.add_sa_binary_annotation(self.port, self.host)
+				if hasattr(out.connection, 'sock') and out.connection.sock and hasattr(out.connection.sock, 'getpeername'):
+					peer = out.connection.sock.getpeername()
+					span.add_sa_binary_annotation(peer[1], self.host, peer[0])
+				else:
+					span.add_sa_binary_annotation(self.port, self.host)
 			except:
 				# always add sa_binary even in case of error
 				# but if we do it before firing urlopen, then we ended up with two annotations
