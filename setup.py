@@ -1,11 +1,11 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='django-zipkin-trace-criteo',
-    version='1.0.5',
-    url='https://github.com/criteo-forks/django-zipkin-trace',
-    author='Manatsawin Hanmongkolchai',
-    author_email='manatsawin+pypi@gmail.com',
+    name='django-zipkin-trace-nonspecialist',
+    version='1.1.2',
+    url='https://github.com/nonspecialist/django-zipkin-trace',
+    author='Colin Panisset',
+    author_email='github@clabber.com',
     description='Automatically trace your Django application to Zipkin',
     license='MIT',
     packages=find_packages(exclude=['tests']),
