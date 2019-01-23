@@ -22,7 +22,7 @@ Trace running in [Stackdriver Trace](https://cloud.google.com/trace/) using [Zip
 Install this from pip:
 
 ```sh
-$ pip install django-zipkin-trace
+$ pip install django-zipkin-trace-nonspecialist
 ```
 
 (you may want to write this in your requirements.txt)
